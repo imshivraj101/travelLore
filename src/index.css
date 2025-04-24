@@ -1,0 +1,164 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 221 32% 17%;
+    --foreground: 44 70% 77%;
+
+    --card: 221 32% 17%;
+    --card-foreground: 44 70% 77%;
+
+    --popover: 221 32% 17%;
+    --popover-foreground: 44 70% 77%;
+
+    --primary: 217 42% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 44 70% 77%;
+    --secondary-foreground: 221 32% 17%;
+
+    --muted: 217 42% 30%;
+    --muted-foreground: 44 70% 77%;
+
+    --accent: 30 70% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 42% 35%;
+    --input: 217 42% 35%;
+    --ring: 217 42% 50%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 221 32% 17%;
+    --sidebar-foreground: 44 70% 77%;
+    --sidebar-primary: 217 42% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 42% 25%;
+    --sidebar-accent-foreground: 44 70% 77%;
+    --sidebar-border: 217 42% 35%;
+    --sidebar-ring: 217 42% 50%;
+  }
+
+  .dark {
+    --background: 221 32% 17%;
+    --foreground: 44 70% 77%;
+
+    --card: 221 32% 17%;
+    --card-foreground: 44 70% 77%;
+
+    --popover: 221 32% 17%;
+    --popover-foreground: 44 70% 77%;
+
+    --primary: 217 42% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 44 70% 77%;
+    --secondary-foreground: 221 32% 17%;
+
+    --muted: 217 42% 30%;
+    --muted-foreground: 44 70% 77%;
+
+    --accent: 30 70% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 42% 35%;
+    --input: 217 42% 35%;
+    --ring: 217 42% 50%;
+
+    --sidebar-background: 221 32% 17%;
+    --sidebar-foreground: 44 70% 77%;
+    --sidebar-primary: 217 42% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 42% 25%;
+    --sidebar-accent-foreground: 44 70% 77%;
+    --sidebar-border: 217 42% 35%;
+    --sidebar-ring: 217 42% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Removed the circular dependency by removing this class */
+  /* .font-playfair {
+    @apply font-playfair;
+  } */
+
+  .swirl-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .swirl-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234A6DB5' fill-opacity='0.1' d='M0 0c40 0 40 40 80 40s40-40 80-40v40c-40 0-40 40-80 40s-40-40-80-40V0z'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  .card-swipe {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .progress-dots {
+    @apply flex justify-center gap-2 my-4;
+  }
+  
+  .progress-dot {
+    @apply w-3 h-3 rounded-full bg-muted transition-all duration-300;
+  }
+  
+  .progress-dot.active {
+    @apply bg-secondary w-6;
+  }
+
+  .swipe-card {
+    @apply rounded-3xl shadow-lg transition-all duration-300 transform;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .swipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .brush-stroke {
+    @apply relative inline-block;
+  }
+
+  .brush-stroke::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background-color: theme('colors.vangogh.yellow');
+    opacity: 0.7;
+    border-radius: 3px;
+    transform: rotate(-1deg);
+  }
+}
